@@ -65,8 +65,8 @@ export const ORDER_STATUS_API = `${BASE_URL}/Orderstatus/getAllOrderStatus`;
 export const PAYMENT_REPORT_API = `${BASE_URL}/reports/getPaymentReport`;
 export const CUSTOMER_REPORT_API = `${BASE_URL}/reports/getCustomerReport`;
 export const GET_INVENTORY_FILE_API = (fileID) =>
-  `${BASE_URL}/InventoryFile/getInventoryFileById/${fileID}`;
-export const GET_INVENTORY_FILE_UPL_API = `${BASE_URL}/InventoryFile/uploadInventoryFile`;
+  `${BASE_URL}/InventoryFile/uploadDownloadInventoryFile/${fileID}`;
+export const GET_INVENTORY_FILE_UPL_API = `${BASE_URL}/InventoryFile/uploadDownloadInventoryFile`;
 export const GET_ORDER_REPORT = `${BASE_URL}/reports/getOrderReport`;
 
 

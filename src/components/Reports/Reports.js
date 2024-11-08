@@ -242,7 +242,7 @@ function ReportGenerator() {
     const uploadUrl = GET_INVENTORY_FILE_UPL_API;
 
     const formData = new FormData();
-    formData.append("inventoryFile", selectedFile); // Ensure this is the correct field name
+    formData.append("UploadDocument", selectedFile); // Ensure this is the correct field name
 
     setUploading(true);
     setIsLoading(true); // Set uploading state to true
@@ -300,10 +300,10 @@ function ReportGenerator() {
       });
   };
   const handleFileDownload = () => {
-    // Check if fileID is available from upload
-    if (fileID) {
+    const fileToDownload = fileID || 1;
+    if (fileToDownload) {
       setIsLoading(true);
-      const downloadUrl = GET_INVENTORY_FILE_API(fileID);
+      const downloadUrl = GET_INVENTORY_FILE_API(fileToDownload);
       fetch(downloadUrl)
         .then((response) => {
           if (!response.ok) {

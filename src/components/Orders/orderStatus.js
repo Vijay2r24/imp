@@ -341,6 +341,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
       setImages([]);
       setPdfPreviews([]);
       setDocPreviews([]);
+      setEditMode(false);
       setFormOrderDetails({
         ...formOrderDetails, // Preserve other fields
         DeliveryDate: "", // Clear Delivery Date
@@ -800,9 +801,9 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
       const viewDocumentsArray = Array.isArray(statusData.viewdocuments) ? statusData.viewdocuments : [];
       if (viewDocumentsArray.length > 0) {
         // Filter URLs based on file extension, accounting for suffixes after the extension
-        const imageFiles = statusData.viewdocuments.filter(url =>
-          /\.(jpg|jpeg|png|gif)(_[^.]*)?$/.test(url)
-        );
+        // const imageFiles = statusData.viewdocuments.filter(url =>
+        //   /\.(jpg|jpeg|png|gif)(_[^.]*)?$/.test(url)
+        // );
         const pdfFiles = statusData.viewdocuments.filter(url =>
           /\.pdf(_[^.]*)?$/.test(url)
         );
@@ -815,8 +816,9 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
           url.includes("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         );
 
-        // Set preview states
-        setImagePreviews(imageFiles);
+        // // Set preview states
+        // setImagePreviews(imageFiles);
+        setImagePreviews(statusData.viewdocuments);
         setPdfPreviews(pdfFiles);
         setDocPreviews(docFiles);
       }
